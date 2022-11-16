@@ -2,6 +2,8 @@
 
 An event registration system for the yells 'Boooo!' at other systems.
 
+![architecture](docs/arch.jpeg)
+
 # Requirements
 
 * GCP Account
