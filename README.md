@@ -1,6 +1,6 @@
 # Event Booz
 
-An event registration system for the yells 'Boooo!' at other systems.
+An event registration system that yells 'Boooo!' at other systems.
 
 ![architecture](docs/arch.jpeg)
 
