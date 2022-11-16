@@ -2,7 +2,7 @@ resource "cloudflare_pages_project" "frontend" {
   depends_on        = [google_cloudfunctions2_function.function]
   account_id        = var.cf_account_id
   name              = var.cf_pages_project_name
-  production_branch = var.git_production_branch
+  production_branch = data.github_repository.repo.default_branch
 
   # Manage build config
   build_config {
@@ -17,15 +17,15 @@ resource "cloudflare_pages_project" "frontend" {
   source {
     type = "github"
     config {
-      owner                         = var.gh_pages_owner
-      repo_name                     = var.gh_pages_repo_name
-      production_branch             = var.git_production_branch
+      owner                         = split("/", data.github_repository.repo.full_name)[0]
+      repo_name                     = data.github_repository.repo.name
+      production_branch             = data.github_repository.repo.default_branch
       pr_comments_enabled           = true
       deployments_enabled           = true
       production_deployment_enabled = true
       preview_deployment_setting    = "custom"
       preview_branch_includes       = ["dev", "preview"]
-      preview_branch_excludes       = [var.git_production_branch]
+      preview_branch_excludes       = [data.github_repository.repo.default_branch]
     }
   }
 

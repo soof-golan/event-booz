@@ -16,6 +16,12 @@ variable "cf_turnstile_secret" {
   sensitive   = true
 }
 
+variable "gh_token" {
+  description = "GitHub API token"
+  type        = string
+  sensitive   = true
+}
+
 variable "cf_web_analytics_tag" {
   description = "The Cloudflare Web Analytics tag to use for the site"
   type        = string
@@ -45,22 +51,10 @@ variable "ct_turnstile_site_key" {
   type        = string
 }
 
-variable "gh_pages_owner" {
-  description = "The owner of the GitHub repository"
-  type        = string
-  default     = "soof-golan"
-}
-
 variable "gh_pages_repo_name" {
   description = "The name of the GitHub repository"
   type        = string
   default     = "event-booz"
-}
-
-variable "git_production_branch" {
-  description = "The name of the production branch"
-  type        = string
-  default     = "main"
 }
 
 variable "gcp_project_name" {
